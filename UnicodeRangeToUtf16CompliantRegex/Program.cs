@@ -4,9 +4,6 @@ namespace UnicodeRangeToUtf16CompliantRegex;
 
 internal sealed partial class Program
 {
-    [GeneratedRegex(@"\[\\U[A-Fa-f0-9]{8}-\\U[A-Fa-f0-9]{8}\]", RegexOptions.Compiled)]
-    private static partial Regex UnicodeRangeRegex();
-
     public static void Main()
     {
         while (true)
@@ -15,7 +12,7 @@ internal sealed partial class Program
             {
                 Console.WriteLine(@"Please enter the unicode range in the following format: [\UXXXXXXXX-\UXXXXXXXX]");
                 string? userInput = Console.ReadLine();
-                if (userInput is not null && UnicodeRangeRegex().IsMatch(userInput))
+                if (userInput is not null)
                 {
                     Utf32Regex utf32Regex = new(userInput);
                     Console.WriteLine($"UTF-16 Compliant Regex: {utf32Regex}");
@@ -30,6 +27,7 @@ internal sealed partial class Program
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Invalid unicode range.");
             }
         }
     }
