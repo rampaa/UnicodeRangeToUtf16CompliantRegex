@@ -2,7 +2,7 @@
 
 namespace UnicodeRangeToUtf16CompliantRegex;
 
-internal sealed partial class Program
+internal sealed class Program
 {
     public static void Main()
     {
